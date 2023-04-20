@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.movieticketbooking.entity.Moviess;
+import com.spring.movieticketbooking.entity.Movie;
 import com.spring.movieticketbooking.service.IMovieService;
 
 
@@ -25,7 +25,7 @@ public class MoviesController {
 	IMovieService movieServies;
 
 	@GetMapping("/searchmovie/{keyword}")
-	public List<Moviess> searchMovies(@PathVariable String keyword) {
+	public List<Movie> searchMovies(@PathVariable String keyword) {
 
 		return movieServies.searchMovieByKeyword(keyword);
 	}

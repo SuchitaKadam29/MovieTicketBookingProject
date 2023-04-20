@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.spring.movieticketbooking.entity.Moviess;
+import com.spring.movieticketbooking.entity.Movie;
 
 /*
  * Author - Suchita Kadam
@@ -15,9 +15,9 @@ import com.spring.movieticketbooking.entity.Moviess;
  * 
  */
 @Repository
-public interface MovieRepository extends JpaRepository<Moviess, Integer> {
+public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
-	@Query("SELECT m FROM Moviess m WHERE LOWER(m.genre) like %:key% OR LOWER(m.movieTitle) like %:key%")
-	public List<Moviess> searchMoviesByKeyword(@Param("key") String keyword);
+	@Query("SELECT m FROM Movie m WHERE LOWER(m.genre) like %:key% OR LOWER(m.movieTitle) like %:key%")
+	public List<Movie> searchMoviesByKeyword(@Param("key") String keyword);
 
 }

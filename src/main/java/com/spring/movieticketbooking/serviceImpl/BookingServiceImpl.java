@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.movieticketbooking.dto.BookingDTO;
-import com.spring.movieticketbooking.entity.Cinema;
-import com.spring.movieticketbooking.entity.Showss;
+import com.spring.movieticketbooking.entity.Booking;
+import com.spring.movieticketbooking.entity.Shows;
 import com.spring.movieticketbooking.exception.MovieException;
 import com.spring.movieticketbooking.repo.BookingRepository;
 import com.spring.movieticketbooking.repo.ShowsRepository;
@@ -37,15 +37,15 @@ public class BookingServiceImpl implements IBookingService {
 	TheaterRepository theaterRepo;
 
 	
-	public Cinema bookTicket(BookingDTO bookings) throws MovieException {
-		Showss show = showsRepo.findById(bookings.getShowId()).orElseThrow(() -> new MovieException("Invalid ShowID"));
+	public Booking bookTicket(BookingDTO bookings) throws MovieException {
+		Shows show = showsRepo.findById(bookings.getShowId()).orElseThrow(() -> new MovieException("Invalid ShowID"));
 
 		LocalDateTime showDateTime = show.getShowDate().toLocalDate().atTime(show.getShowTime().toLocalTime());
 		LocalDateTime now = LocalDateTime.now();
 		String paymentMethod = bookings.getPaymentMethod();
 
-		int theatreId = show.getTheatre().getTheaterId();
-		double ticketPrice = show.getTheatre().getTicketPrice();
+		int theatreId = show.getTheater().getTheaterId();
+		double ticketPrice = show.getTheater().getTicketPrice();
 		Long noOfBookedSeats = bookingRepo.getBookedCount(show.getShowId());
 		Long totalCapacity = theaterRepo.getTotalCapacity(theatreId);
 		int availableSeats = (int) (totalCapacity - noOfBookedSeats);
@@ -72,7 +72,7 @@ public class BookingServiceImpl implements IBookingService {
 			throw new MovieException("Payment method not supported");
 		}
 
-		Cinema booking = new Cinema();
+		Booking booking = new Booking();
 		booking.setSeatNo(seatNo);
 		booking.setBookingDate(Date.valueOf(now.toLocalDate()));
 		booking.setCustomerId(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -104,7 +104,7 @@ public class BookingServiceImpl implements IBookingService {
 		}
 	}
 	@Override
-	public List<Cinema> getAllMyBookings() {
+	public List<Booking> getAllMyBookings() {
 
 		String customerId = SecurityContextHolder.getContext().getAuthentication().getName();
 		return bookingRepo.findByCustomerId(customerId);
@@ -116,7 +116,7 @@ public class BookingServiceImpl implements IBookingService {
 	public String cancelMyBooking(int bookingId) throws MovieException {
 		String customerId = SecurityContextHolder.getContext().getAuthentication().getName();
 
-		Showss show = bookingRepo.getShow(bookingId, customerId);
+		Shows show = bookingRepo.getShow(bookingId, customerId);
 		System.out.println(show);
 		if (show != null) {
 			Date showDate = show.getShowDate();

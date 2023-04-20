@@ -3,7 +3,7 @@ package com.spring.movieticketbooking.service;
 import java.util.List;
 
 import com.spring.movieticketbooking.dto.BookingDTO;
-import com.spring.movieticketbooking.entity.Cinema;
+import com.spring.movieticketbooking.entity.Booking;
 import com.spring.movieticketbooking.exception.MovieException;
 
 /*
@@ -13,9 +13,9 @@ import com.spring.movieticketbooking.exception.MovieException;
  */
 public interface IBookingService {
 
-	public Cinema bookTicket(BookingDTO bookings) throws MovieException;
+	public Booking bookTicket(BookingDTO bookings) throws MovieException;
 
-	public List<Cinema> getAllMyBookings();
+	public List<Booking> getAllMyBookings();
 
 	public String cancelMyBooking(int bookingId) throws MovieException;
 

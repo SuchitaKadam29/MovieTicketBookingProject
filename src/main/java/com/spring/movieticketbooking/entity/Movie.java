@@ -1,10 +1,11 @@
 package com.spring.movieticketbooking.entity;
 
+	
 	import javax.persistence.Column;
 	import javax.persistence.Entity;
+	import javax.persistence.GeneratedValue;
+	import javax.persistence.GenerationType;
 	import javax.persistence.Id;
-	import javax.persistence.JoinColumn;
-	import javax.persistence.ManyToOne;
 	import javax.persistence.Table;
 
 	import lombok.AllArgsConstructor;
@@ -12,8 +13,6 @@ package com.spring.movieticketbooking.entity;
 	import lombok.Getter;
 	import lombok.NoArgsConstructor;
 	import lombok.Setter;
-
-
 
 	/*
 	 * Author - Suchita Kadam
@@ -26,23 +25,18 @@ package com.spring.movieticketbooking.entity;
 	@Setter
 	@Data
 	@Entity
-	public class RatingsAndReviews {
-
+	@Table(name="Movie")
+	public class Movie {
 		@Id
-		@Column(name="rating_id")
-		private int ratingId;
-		
-		@Column(name="customer_id")
-		private String customerId;
-		
-		@ManyToOne
-		@JoinColumn(name = "movie_id")
-		private Movie movie;
-		
-		@Column(name="rating")
-		private	Double rating;
-		
-		@Column(name="review")
-		private String review;
+		@Column(name = "movie_id")
+		@GeneratedValue(strategy = GenerationType.AUTO)
+		private int movieId;
+		@Column(name = "movie_title")
+		private String movieTitle;
+		private String genre;
+		private String director;
+		private int duration;
+		private double rating;
 
-}
+	}
+

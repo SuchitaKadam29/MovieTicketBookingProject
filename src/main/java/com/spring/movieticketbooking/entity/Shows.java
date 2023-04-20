@@ -1,5 +1,8 @@
 package com.spring.movieticketbooking.entity;
 
+	import java.sql.Date;
+	import java.sql.Time;
+
 	import javax.persistence.Column;
 	import javax.persistence.Entity;
 	import javax.persistence.Id;
@@ -11,38 +14,43 @@ package com.spring.movieticketbooking.entity;
 	import lombok.Data;
 	import lombok.Getter;
 	import lombok.NoArgsConstructor;
-	import lombok.Setter;
-
-
 
 	/*
 	 * Author - Suchita Kadam
 	 * 6 April 2023
 	 * 
 	 */
-	@NoArgsConstructor
 	@AllArgsConstructor
+	@NoArgsConstructor
 	@Getter
-	@Setter
 	@Data
 	@Entity
-	public class RatingsAndReviews {
+	@Table(name="shows")
+	public class Shows {
+		
 
 		@Id
-		@Column(name="rating_id")
-		private int ratingId;
-		
-		@Column(name="customer_id")
-		private String customerId;
-		
+		@Column(name = "show_id")
+		private	int showId;
+
+		@ManyToOne
+		@JoinColumn(name = "theater_id")
+		private Theater theater;
+
 		@ManyToOne
 		@JoinColumn(name = "movie_id")
 		private Movie movie;
-		
-		@Column(name="rating")
-		private	Double rating;
-		
-		@Column(name="review")
-		private String review;
 
-}
+		@Column(name = "show_date")
+		private Date showDate;
+
+		@Column(name = "show_time")
+		private Time showTime;
+
+		@Column(name = "available_seats")
+		private int availableSeats;
+
+
+
+	}
+

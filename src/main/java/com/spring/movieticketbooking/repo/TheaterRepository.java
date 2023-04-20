@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.spring.movieticketbooking.entity.Theaterss;
+import com.spring.movieticketbooking.entity.Theater;
 
 
 
@@ -17,13 +17,13 @@ import com.spring.movieticketbooking.entity.Theaterss;
  * 
  */
 @Repository
-public interface TheaterRepository extends JpaRepository<Theaterss, Integer> {
+public interface TheaterRepository extends JpaRepository<Theater, Integer> {
 
 
-	@Query("SELECT t FROM Theaterss t  WHERE LOWER(t.theaterName) like %:key% OR UPPER(t.location) like %:key%")
-	public List<Theaterss> searchTheaterByKeyword(@Param("key")String keyword);
+	@Query("SELECT t FROM Theater t  WHERE LOWER(t.theaterName) like %:key% OR UPPER(t.location) like %:key%")
+	public List<Theater> searchTheaterByKeyword(@Param("key")String keyword);
 	
-	@Query("SELECT t.seatingCapacity FROM Theaterss t  WHERE t.theaterId = :theaterId")
+	@Query("SELECT t.seatingCapacity FROM Theater t  WHERE t.theaterId = :theaterId")
 	public Long getTotalCapacity(@Param("theaterId")int theaterId);
 
 }

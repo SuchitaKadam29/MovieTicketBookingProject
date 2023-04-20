@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.spring.movieticketbooking.entity.Showss;
+import com.spring.movieticketbooking.entity.Shows;
 
 /*
  * Author - Suchita Kadam
@@ -15,11 +15,11 @@ import com.spring.movieticketbooking.entity.Showss;
  * 
  */
 @Repository
-public interface ShowsRepository extends JpaRepository<Showss, Integer> {
+public interface ShowsRepository extends JpaRepository<Shows, Integer> {
 	
 
-	@Query("SELECT s FROM Showss s WHERE LOWER(s.movie.movieTitle) like %:movieTitle%")
-	public List<Showss> searchShowsByTitle(@Param("movieTitle")String movieTitle);
+	@Query("SELECT s FROM Shows s WHERE LOWER(s.movie.movieTitle) like %:movieTitle%")
+	public List<Shows> searchShowsByTitle(@Param("movieTitle")String movieTitle);
 
 
 }

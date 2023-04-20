@@ -2,7 +2,7 @@ package com.spring.movieticketbooking.service;
 
 import java.util.List;
 
-import com.spring.movieticketbooking.entity.Showss;
+import com.spring.movieticketbooking.entity.Shows;
 
 /*
  * Author - Suchita Kadam
@@ -12,8 +12,8 @@ import com.spring.movieticketbooking.entity.Showss;
 public interface IShowsService {
 	
 	
-public List<Showss> getShows();
+public List<Shows> getShows();
 	
-	public List<Showss> searchShowsByTitle(String movieTitle);
+	public List<Shows> searchShowsByTitle(String movieTitle);
 
 }

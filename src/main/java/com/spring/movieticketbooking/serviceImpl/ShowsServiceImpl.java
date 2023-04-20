@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spring.movieticketbooking.entity.Showss;
+import com.spring.movieticketbooking.entity.Shows;
 import com.spring.movieticketbooking.repo.ShowsRepository;
 import com.spring.movieticketbooking.service.IShowsService;
 
@@ -21,13 +21,13 @@ public class ShowsServiceImpl implements IShowsService {
 	ShowsRepository ShowsRepo;
 
 	@Override
-	public List<Showss> getShows() {
+	public List<Shows> getShows() {
 		// TODO Auto-generated method stub
 		return ShowsRepo.findAll();
 	}
 
 	@Override
-	public List<Showss> searchShowsByTitle(String movieTitle) {
+	public List<Shows> searchShowsByTitle(String movieTitle) {
 		// TODO Auto-generated method stub
 		return ShowsRepo.searchShowsByTitle(movieTitle.toLowerCase());
 	}

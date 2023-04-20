@@ -33,7 +33,7 @@ public class RatingsAndReviewsController {
 		return ratingsAndReviewsService.addRatingsAndReviews(ratingsAndReviewsDTO);
 	}
 
-	@GetMapping("/getratingsbymovie/{movieName}")
+	@GetMapping("/getmovieratings/{movieName}")
 	public List<RatingsAndReviews> getRatingsByMovie(@PathVariable String movieName) {
 		return ratingsAndReviewsService.getRatingsBymovieName(movieName);
 	}

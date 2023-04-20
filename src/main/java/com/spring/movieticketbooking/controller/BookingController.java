@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.movieticketbooking.dto.BookingDTO;
-import com.spring.movieticketbooking.entity.Cinema;
+import com.spring.movieticketbooking.entity.Booking;
 import com.spring.movieticketbooking.exception.MovieException;
 import com.spring.movieticketbooking.service.IBookingService;
 
@@ -33,12 +33,12 @@ public class BookingController {
 	IBookingService bookingServices;
 
 	@PostMapping("/bookmovieticket")
-	public Cinema bookTicket(@RequestBody BookingDTO booking) throws MovieException {
+	public Booking bookTicket(@RequestBody BookingDTO booking) throws MovieException {
 		return bookingServices.bookTicket(booking);
 	}
 
 	@GetMapping("/bookinghistory")
-	public List<Cinema> getAllBookings() {
+	public List<Booking> getAllBookings() {
 		return bookingServices.getAllMyBookings();
 	}
 

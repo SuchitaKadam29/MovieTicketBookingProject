@@ -2,7 +2,7 @@ package com.spring.movieticketbooking.service;
 
 import java.util.List;
 
-import com.spring.movieticketbooking.entity.Theaterss;
+import com.spring.movieticketbooking.entity.Theater;
 
 /*
  * Author - Suchita Kadam
@@ -12,8 +12,8 @@ import com.spring.movieticketbooking.entity.Theaterss;
 public interface ITheaterService {
 
 	
-public List<Theaterss> getTheater();
+public List<Theater> getTheater();
 	
-	public List<Theaterss>searchTheaterByKeyword(String keyword);
+	public List<Theater>searchTheaterByKeyword(String keyword);
 
 }

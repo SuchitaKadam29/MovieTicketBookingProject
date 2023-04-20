@@ -7,7 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.spring.movieticketbooking.dto.RatingsAndReviewsDTO;
-import com.spring.movieticketbooking.entity.Moviess;
+import com.spring.movieticketbooking.entity.Movie;
 import com.spring.movieticketbooking.entity.RatingsAndReviews;
 import com.spring.movieticketbooking.exception.MovieException;
 import com.spring.movieticketbooking.repo.MovieRepository;
@@ -35,7 +35,7 @@ public class RatingsAndReviewsServiceImpl implements IRatingsAndReviewsService {
 	@Override
 	public RatingsAndReviews addRatingsAndReviews(RatingsAndReviewsDTO ratingsAndReviewsDTO) throws MovieException {
 
-				Moviess movie = movieRepo.findById(ratingsAndReviewsDTO.getMovieId()).orElse(null);
+				Movie movie = movieRepo.findById(ratingsAndReviewsDTO.getMovieId()).orElse(null);
 				Double userRating = ratingsAndReviewsDTO.getRating();
 				if (movie != null) {
 
